@@ -1,0 +1,26 @@
+apiVersion: v1
+data:
+  config.json: |
+    {
+      "inbounds": [
+        {
+          "port": 9000,
+          "protocol": "vmess",
+          "settings": {
+            "clients": [
+              {
+                "id": "$YOUR_UUID"
+              }
+            ]
+          }
+        }
+      ],
+      "outbounds": [
+        {
+          "protocol": "freedom"
+        }
+      ]
+    }
+kind: ConfigMap
+metadata:
+  name: vpn-config

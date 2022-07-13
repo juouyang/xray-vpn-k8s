@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: xray
+  name: xray
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: xray
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: xray
+    spec:
+      containers:
+      - image: teddysun/xray
+        name: xray
+        ports:
+        - containerPort: 9000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 300Mi
+          requests:
+            cpu: 50m
+            memory: 100Mi
+        volumeMounts:
+        - name: "config"
+          mountPath: "/etc/xray/config.json"
+          subPath: "config.json"
+      volumes:
+        - name: "config"
+          configMap:
+            name: "vpn-config"
+status: {}

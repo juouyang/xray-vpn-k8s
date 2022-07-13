@@ -1,0 +1,20 @@
+{
+  "inbounds": [
+    {
+      "port": 9000,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "$YOUR_UUID"
+          }
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ]
+}
