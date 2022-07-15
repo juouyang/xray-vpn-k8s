@@ -1,4 +1,9 @@
 {
+  "log": {
+    "access": "/dev/null",
+    "loglevel": "none",
+    "error": "/dev/null"
+  },
   "inbounds": [
     {
       "port": 9000,
