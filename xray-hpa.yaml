@@ -8,5 +8,5 @@ spec:
     kind: Deployment
     name: xray
   minReplicas: 3
-  maxReplicas: 9
+  maxReplicas: 15
   targetCPUUtilizationPercentage: 60
