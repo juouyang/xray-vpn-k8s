@@ -8,7 +8,7 @@ docker run -it -p 9000:9000 --name xray-server --rm \
 ```
 Client
 ```
-docker run -d -p 3128:3128 -p 1080:1080 --name xray --restart unless-stopped \
+docker run -d -p 3128:3128 --name xray --restart unless-stopped \
     -v $(pwd)/client/etc/xray:/etc/xray/ \
     teddysun/xray
 ```
