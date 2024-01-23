@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: xray-vpn
+  namespace: xray-vpn
+  labels:
+    app: xray
+spec:
+  selector:
+    matchLabels:
+      app: xray
+  template:
+    metadata:
+      labels:
+        app: xray
+    spec:
+      containers:
+        - image: teddysun/xray:1.8.7
+          name: xray
+          ports:
+            - containerPort: 10443
+              hostPort: $YOUR_NODEPORT
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 10m
+              memory: 10Mi
+          volumeMounts:
+            - name: vpn-config-volume
+              readOnly: true
+              mountPath: "/etc/xray/config.json"
+              subPath: "config.json"
+      restartPolicy: Always
+      volumes:
+        - name: vpn-config-volume
+          secret:
+            secretName: vpn-config

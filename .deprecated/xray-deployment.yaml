@@ -18,7 +18,7 @@ spec:
         app: xray
     spec:
       containers:
-      - image: teddysun/xray
+      - image: teddysun/xray:1.8.6
         name: xray
         ports:
         - containerPort: 9000
