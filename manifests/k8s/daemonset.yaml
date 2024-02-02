@@ -19,7 +19,7 @@ spec:
           name: xray
           ports:
             - containerPort: 10443
-              hostPort: $YOUR_NODEPORT
+              hostPort: 10443
               protocol: TCP
           resources:
             requests:

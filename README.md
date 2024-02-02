@@ -18,19 +18,13 @@ docker run -d -p 3128:3128 --name xray --restart unless-stopped \
 
 Install
 ```
-k create ns xray-vpn
-kubens xray-vpn
-kubectl create secret generic vpn-config \
+kubectl create ns xray-vpn
+kubectl config set-context --current --namespace=xray-vpn
+kubectl create secret generic vpn-config -n xray-vpn \
   --from-file=etc/xray/config.json \
   -o yaml --dry-run=client | kubeseal -o yaml > manifests/k8s/sealed-config-secret.yaml
 kubectl create --save-config -f manifests/k8s/sealed-config-secret.yaml -n xray-vpn
 kubectl create --save-config -f manifests/k8s/daemonset.yaml -n xray-vpn
-```
-
-Update
-```
-k apply -f xray-config.yaml
-k rollout restart deploy
 ```
 
 Remove
