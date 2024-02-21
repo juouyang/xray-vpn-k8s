@@ -15,7 +15,7 @@ spec:
         app: xray
     spec:
       nodeSelector:
-          network:
+          network: "oracle"
       containers:
         - image: teddysun/xray:1.8.7
           name: xray
